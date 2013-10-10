@@ -1,5 +1,6 @@
 <title>ToDo App</title>
 <div class="container" > 
+<%= form_for [@project, @task], :url => project_task_path do |t| %>   
 <div class="row">
 <div class="span4">
 <h1>Current project:</h1>
@@ -17,8 +18,7 @@
 	  </tr>
 	</thead>
   <tbody>
-	    <tr>
-		    <%= form_for [@project, @task], :url => project_task_path do |t| %>   
+	    <tr>  
 		      <td><%= t.text_field  :todo_item, class: "span4"%></td>
 		      <td><%= t.number_field  :priority, class: "span1"%></td>
 		      <td><%= t.submit "Edit task", class: "btn btn-primary" %></td>

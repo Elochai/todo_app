@@ -33,6 +33,7 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'factory_girl'
 gem 'shoulda-matchers'
+ruby '2.0.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
