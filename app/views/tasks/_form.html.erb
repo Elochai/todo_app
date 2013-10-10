@@ -1,0 +1,28 @@
+<title>ToDo App</title>
+<div class="container" > 
+<div class="row">
+<div class="span4">
+<hr>
+<div class="well"> 
+<center><h2><%= @project.project_name%></h2></center>
+
+		    <%= form_for[@project, @task], :url => { :action => "update" } do |t| %>   
+		      <%= t.text_field  :todo_item %>
+		      <%= t.text_field  :priority %>
+		      <%= t.submit "Edit task", class: "btn btn-primary" %>
+		    <% end %>
+
+ <% if !flash[:error].nil? %>
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert" >×</button>
+    <strong><%= flash[:error] %></strong>
+  </div>
+<% end %>
+
+
+
+
+
+</div>
+
+</div></div></div>

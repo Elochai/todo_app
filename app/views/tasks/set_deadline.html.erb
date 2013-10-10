@@ -1,0 +1,24 @@
+<title>ToDo App</title>
+<div class="container" > 
+<div class="row">
+<div class="span4">
+<h2>Set deadline for project "<%= @task.todo_item%>":</h2>
+<hr>
+<div class="well">
+  
+<center>
+<%= form_for [@project, @task], :url => { :action => "create_deadline" } do |t| %> 
+    <%= t.datetime_select :deadline, :start_year => Time.now.year, :end_year => Time.now.year + 30 %><br>
+    <%= t.submit"Set deadline" %>
+<% end %>
+
+<hr>
+
+<%= link_to 'Back to the project', project_path(@project), class: 'btn btn-primary' %></center>
+ 
+
+
+
+  
+</div>
+</div></div></div>

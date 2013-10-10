@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+   <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div class="navbar" align="right">
+    <div class="navbar-inner">
+      <a class="brand" href="/projects/index/">TODO list</a><br>
+<%if user_signed_in?%>
+Signed in as <%= current_user.email %>
+<%= link_to "Sign out", destroy_user_session_path, :method=>:delete %>
+<%else%>
+<%= link_to "Sing up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> 
+<%end%>
+</div>
+</div>
+
+
+<%= yield %>
+
+</body>
+</html>
