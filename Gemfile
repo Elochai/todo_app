@@ -32,6 +32,7 @@ gem 'protected_attributes'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'factory_girl'
+gem 'shoulda-matchers'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

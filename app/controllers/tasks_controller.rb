@@ -5,7 +5,6 @@ class TasksController < ApplicationController
 
 
   def destroy
-    @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
     @task.destroy
     redirect_to project_path(@project), :notice => "Successfully deleted'"
@@ -23,7 +22,6 @@ class TasksController < ApplicationController
   end
 
   def complete
-    @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
    if @task.completed == false
      @task.update_attribute(:completed, true)
@@ -35,13 +33,10 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
-    #redirect_to edit_project_task_path(@project, @task) 
   end
 
   def update
-    @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
     if @task.update_attributes(params[:task])
       flash[:notice] = "Task updated"
@@ -62,7 +57,6 @@ class TasksController < ApplicationController
   end
 
   def create_deadline
-    @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
     if @task.update_attributes(params[:task])
       flash[:notice] = "Deadline set"

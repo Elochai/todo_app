@@ -19,7 +19,7 @@
 	    <tr>
 		    <%= form_for [@project, @task] do |t| %>   
 		      <td><%= t.text_field  :todo_item, class: "span4"%></td>
-		      <td><%= t.text_field  :priority, class: "span1"%></td>
+		      <td><%= t.number_field  :priority, class: "span1"%></td>
 		      <td><%= t.submit "Add task", class: "btn btn-primary" %></td>
 		    <% end %>
     </tr>

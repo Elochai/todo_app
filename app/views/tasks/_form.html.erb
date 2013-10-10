@@ -2,16 +2,28 @@
 <div class="container" > 
 <div class="row">
 <div class="span4">
+<h1>Current project:</h1>
 <hr>
 <div class="well"> 
-<center><h2><%= @project.project_name%></h2></center>
+<center><h2><%= @project.project_name%></h2>
+<h3>Editing task "<%= @task.todo_item %>":</h3></center>
 
-		    <%= form_for[@project, @task], :url => { :action => "update" } do |t| %>   
-		      <%= t.text_field  :todo_item %>
-		      <%= t.text_field  :priority %>
-		      <%= t.submit "Edit task", class: "btn btn-primary" %>
+<table class ="table">
+	<thead>
+	  <tr>
+	    <td>Task</td>
+	    <td>Priority</td>
+	    <td>Manage</td>
+	  </tr>
+	</thead>
+  <tbody>
+	    <tr>
+		    <%= form_for [@project, @task], :url => project_task_path do |t| %>   
+		      <td><%= t.text_field  :todo_item, class: "span4"%></td>
+		      <td><%= t.number_field  :priority, class: "span1"%></td>
+		      <td><%= t.submit "Edit task", class: "btn btn-primary" %></td>
 		    <% end %>
-
+    </tr>
  <% if !flash[:error].nil? %>
   <div class="alert alert-error">
     <button type="button" class="close" data-dismiss="alert" >×</button>
@@ -20,6 +32,37 @@
 <% end %>
 
 
+	  <% @project.tasks.each do |t| %>
+	    <% if t.persisted? %>
+			  <tr>  
+			    <td> 	
+			      <% if t.completed == false %>    
+				        <% if t.deadline == nil %>
+				       		<strong><%= t.todo_item %></strong>
+				    		<% else %>
+			           	 <strong><%= t.todo_item %></strong><small> (deadline: <%= t.deadline %>)</small> 
+			        <% end %>
+			      <% else %>
+			      		  <strike><strong><%= t.todo_item %></strong></strike>
+				    <% end %>
+		      </td>
+		        
+		      <td>
+		        <%= t.priority %>
+		      </td>
+
+		      <td>
+	        	<% if t.completed == true %>
+			        <% link = "incomplete" %> 
+			      <% else %>
+		          <%  link = "complete" %>
+			      <% end %>
+		        <span class='fixed-btn'><%= link_to "#{link}", complete_project_task_path(@project.id, t.id), class: "btn btn-mini btn-inverse task-action" %></span><span class='fixed-btn'><%= link_to "deadline", set_deadline_project_task_path(@project.id, t.id), class: "btn btn-mini task-action" %></span><span class='fixed-btn'><%= link_to "edit", edit_project_task_path(@project, t), class: "btn btn-mini task-action" %></span><span class='fixed-btn'><%= link_to "delete", project_task_path(@project.id, t.id), :method => :delete, class: "btn btn-mini btn-danger task-action" %></span>	    
+		      </td>
+	      </tr>
+	    <% end %>
+	  <% end %>
+  </tbody>
 
 
 
