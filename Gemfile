@@ -33,6 +33,7 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'factory_girl'
 gem 'shoulda-matchers'
+gem 'rails_12factor'
 ruby '2.0.0'
 
 group :doc do
