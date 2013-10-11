@@ -43,7 +43,7 @@
 *.log
 *.sql
 *.sqlite
-/config/database.yml
+*.yml
 
 # OS generated files #
 ######################
