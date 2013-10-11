@@ -6,9 +6,9 @@
 development:
     adapter: postgresql
     encoding: unicode
-    database: development
+    database: todo_development
     pool: 5
-    username: postgres
+    username: admin
     password: pas9268
     host: localhost
 
@@ -18,17 +18,17 @@ development:
 test:
     adapter: postgresql
     encoding: unicode
-    database: test
+    database: todo_test
     pool: 5
-    username: porstgres
+    username: admin
     password: pas9268
     host: localhost
 
 production:
     adapter: postgresql
     encoding: unicode
-    database: production
+    database: todo_production
     pool: 5
-    username: postgres
+    username: admin
     password: pas9268
     host: localhost
