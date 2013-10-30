@@ -57,7 +57,7 @@
 		      <%= t.priority %>
 		      </td>
 		      <td class='centered fixed3'>
-	        	 <span class=""><%= link_to "", edit_project_task_path(@project, t), class: "icon-pencil" %> | <%= link_to "", set_deadline_project_task_path(@project.id, t.id), class: "icon-exclamation-sign" %> | <%= link_to "", project_task_path(@project.id, t.id), :method => :delete, class: "icon-trash" %></span>   
+	        	 <%= link_to "", edit_project_task_path(@project, t), class: "icon-pencil" %> | <%= link_to "", set_deadline_project_task_path(@project.id, t.id), class: "icon-exclamation-sign" %> | <%= link_to "", project_task_path(@project.id, t.id), :method => :delete, class: "icon-trash" %>
 		      </td>
 	      </tr>
 	    <% end %>

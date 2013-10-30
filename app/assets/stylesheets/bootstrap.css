@@ -2226,8 +2226,7 @@ table {
   background-color: #ffffcc;
   cursor: pointer;
   visibility: visible;
-}
- 
+} 
 
 
 table td[class*="span"],
@@ -2391,9 +2390,6 @@ table th[class*="span"],
   background-image: url("/assets/glyphicons-halflings-white.png");
 }
 
-.icons {
-  visibility:hidden;
-}
 
 .icon-glass {
   background-position: 0      0;
