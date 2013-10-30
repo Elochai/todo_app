@@ -1,5 +1,6 @@
 todo_app  
 This app on heroku: http://still-falls-8267.herokuapp.com/
+Test user: user@gmail.com, 12345678
 ========
 Answers for SQL requests:
 

@@ -229,6 +229,7 @@ body {
   color: #000000;
   background-attachment: scroll;
   background: url(/assets/background2.png) repeat-x #ff9900;
+  background-size: auto 800px;
 }
 
 a {
@@ -4567,6 +4568,7 @@ input[type="submit"].btn.btn-mini {
   min-height: 40px; 
   padding-right: 20px;
   padding-left: 20px;
+  position: relative;
   background-image: url(/assets/bluebar.png);
   background-repeat: no-repeat;
   border: 0px solid #436EEE;
@@ -4622,20 +4624,17 @@ div:hover > .delproject {
 }
 
 .delproject {
-  position:relative;
-  top: 5px;
-  left: 379px;
+  position:absolute;
+  top: 18px;
+  right: 30px;
 }
 
 .editproject {
-  position:relative;
-  top: 5px;
-  left: 378px;
+  position:absolute;
+  top: 18px;
+  right: 50px;
 }
 
-.projecticons {
-  
-}
 
 .barform {
   padding-left: 30px;
