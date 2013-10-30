@@ -1,20 +1,32 @@
 <title>ToDo App</title>
 <div class="container" > 
 <div class="row">
-<div class="span4">
-<h2>Your Projects, sir:</h2>
-<hr>
-<div class="well">
-  <% @user_projects.each do |t| %>
-        <center><h2><strong><%=  link_to "#{t.project_name}", project_path(t), :method => :get %></strong>  <%= link_to 'edit', edit_project_path(t), class: 'btn btn-mini'%><%= link_to 'delete', t, :confirm => 'Are you sure?',:method => :delete, class: 'btn btn-mini'%></h2></center>
-  <% end %>
+<div class="span7">
+<h2 class="headertext">SIMPLE TODO APP ON RoR</h2>
+<table class ="table table-bordered">
+    <thead>
+     <div class="navbar">
+     <div class="navbar-blue">
+     <h3 class="bartext">Your projects:</h3>
+     </div>
+     </div>
+	</thead>
+   <tbody>
+	<tr>
+	  <% @user_projects.each do |t| %>
+		<td class='fixed5'>
+			<strong><%=  link_to "#{t.project_name}", project_path(t), :method => :get %></strong>
+		</td>
+		<td class='centered fixed3'>
+			<%= link_to "", edit_project_path(t), class: "icon-pencil"%> | <%= link_to "", t, :confirm => 'Are you sure?',:method => :delete, class: "icon-trash"%>
+		</td>
+	</tr>
+	  <% end %>
+  </tbody>
+  </table>
 
-<hr>
- <center><%= link_to 'New project', new_project_path, class: 'btn btn-primary' %></center>
+ <center><%= link_to '', new_project_path, class: 'addproject' %></center>
 
 
 
-
-  
-</div>
 </div></div></div>

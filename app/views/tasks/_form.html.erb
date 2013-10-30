@@ -2,40 +2,47 @@
 <div class="container" > 
 <%= form_for [@project, @task], :url => project_task_path do |t| %>   
 <div class="row">
-<div class="span4">
-<h1>Current project:</h1>
-<hr>
-<div class="well"> 
-<center><h2><%= @project.project_name%></h2>
-<h3>Editing task "<%= @task.todo_item %>":</h3></center>
-
-<table class ="table">
+<div class="span7">
+<h2 class="headertext">Editing task "<%= @task.todo_item %>":</h2>
+<table class ="table table-bordered">
 	<thead>
-	  <tr>
-	    <td>Task</td>
-	    <td>Priority</td>
-	    <td>Manage</td>
-	  </tr>
+     <div class="navbar">
+     <div class="navbar-blue">
+     <h3 class="bartext"><%= @project.project_name%><%= link_to "", edit_project_path(@project), class: "icon-pencil icon-white editproject"%> <%= link_to "", @project, :confirm => 'Are you sure?',:method => :delete, class: "icon-trash icon-white delproject"%></h3></h3>
+     </div>
+     </div>
+     <div class="navbar">
+     <div class="navbar-gray editnav">
+     <div class="input-append">
+		      <%= t.text_field  :todo_item, class: "input_task", placeholder:"Start typing here to rename a task..."%>
+		      <%= t.number_field  :priority, class: "input_prior"%>
+		      <%= t.submit "Edit Task", class: "butn btn-add" %>
+		<% end %>
+	 </div>
+	 </div>
+     </div>
 	</thead>
   <tbody>
-	    <tr>  
-		      <td><%= t.text_field  :todo_item, class: "span4"%></td>
-		      <td><%= t.number_field  :priority, class: "span1"%></td>
-		      <td><%= t.submit "Edit task", class: "btn btn-primary" %></td>
-		    <% end %>
-    </tr>
  <% if !flash[:error].nil? %>
   <div class="alert alert-error">
     <button type="button" class="close" data-dismiss="alert" >×</button>
     <strong><%= flash[:error] %></strong>
   </div>
 <% end %>
-
-
 	  <% @project.tasks.each do |t| %>
 	    <% if t.persisted? %>
 			  <tr>  
-			    <td> 	
+			  <td class='fixed2 centered'>
+			  <% if t.completed == true %>
+			        <% complete = "icon-repeat" %> 
+			      <% else %>
+		          <%  complete = "icon-ok" %>
+			      <% end %>
+		        <%= link_to "", complete_project_task_path(@project.id, t.id), class: "#{complete}" %>
+		        </td>
+		        <td class='empty'>
+		        </td>
+			    <td class='fixed1'> 	
 			      <% if t.completed == false %>    
 				        <% if t.deadline == nil %>
 				       		<strong><%= t.todo_item %></strong>
@@ -46,26 +53,18 @@
 			      		  <strike><strong><%= t.todo_item %></strong></strike>
 				    <% end %>
 		      </td>
-		        
-		      <td>
-		        <%= t.priority %>
+		      <td class='fixed4 centered'>
+		      <%= t.priority %>
 		      </td>
-
-		      <td>
-	        	<% if t.completed == true %>
-			        <% link = "incomplete" %> 
-			      <% else %>
-		          <%  link = "complete" %>
-			      <% end %>
-		        <span class='fixed-btn'><%= link_to "#{link}", complete_project_task_path(@project.id, t.id), class: "btn btn-mini btn-inverse task-action" %></span><span class='fixed-btn'><%= link_to "deadline", set_deadline_project_task_path(@project.id, t.id), class: "btn btn-mini task-action" %></span><span class='fixed-btn'><%= link_to "edit", edit_project_task_path(@project, t), class: "btn btn-mini task-action" %></span><span class='fixed-btn'><%= link_to "delete", project_task_path(@project.id, t.id), :method => :delete, class: "btn btn-mini btn-danger task-action" %></span>	    
+		      <td class='centered fixed3'>
+	        	 <span class='fixed-btn'><%= link_to "", edit_project_task_path(@project, t), class: "icon-pencil" %></span> | <%= link_to "", set_deadline_project_task_path(@project.id, t.id), class: "icon-exclamation-sign" %></span> | <span class='fixed-btn'><%= link_to "", project_task_path(@project.id, t.id), :method => :delete, class: "icon-trash" %></span>	    
 		      </td>
 	      </tr>
 	    <% end %>
 	  <% end %>
   </tbody>
+  </table>
 
-
-
-</div>
+ <center><%= link_to 'Back to the project', project_path(@project), class: 'btn btn-primary' %></center>
 
 </div></div></div>

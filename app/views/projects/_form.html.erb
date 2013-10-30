@@ -1,19 +1,20 @@
 <title>ToDo App</title>
 <div class="container" > 
 <div class="row">
-<div class="span4">
-<hr>
+<div class="span7">
 
-<div class="well"> 
- <center><%= form_for @project do |p|  %>
-    <%= p.text_field  :project_name %>
-    <%= p.submit "Rename", class: "btn btn-primary" %>
- <%end%></center>
-<% if !flash[:error].nil? %>
-    <div class="alert alert-error">
-    <button type="button" class="close" data-dismiss="alert" >×</button>
-    <strong><%= flash[:error] %></strong>
-    </div>
-<% end %>
-</div>
+   <div class="navbar">
+     <div class="navbar-blue">
+     <h3 class="bartext">Edit</h3>
+     </div>
+     </div>
+     <div class="navbar">
+     <div class="navbar-gray projnav">
+     <div class="input-append">
+		 <%= form_for @project do |p|  %>
+		    <%= p.text_field  :project_name, class: "input_project", placeholder:"Start typing here to rename a project..."%>
+		    <%= p.submit "Rename", class: "butn btn-add" %>
+		 <%end%>
+<center><%= link_to 'Back to projects', projects_path, class: 'btn btn-primary' %></center>
+ 
 </div></div></div>
